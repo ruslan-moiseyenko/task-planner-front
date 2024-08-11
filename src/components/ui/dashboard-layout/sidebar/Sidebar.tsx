@@ -21,7 +21,7 @@ export function Sidebar() {
 						color={COLORS.primary}
 						size={38}
 					/>
-					<span className='text-2xl font-bold relative'>RED Planner</span>
+					<span className='text-2xl font-bold relative'>Tasks Planner</span>
 				</Link>
 				<div className='p-3 relative'>
 					<LogoutButton />
@@ -36,14 +36,14 @@ export function Sidebar() {
 			<footer className='text-xs opacity-40 font-normal text-center p-layout'>
 				2024 &copy; With love from{' '}
 				<a
-					href='https://www.youtube.com/c/redgroup/?sub_confirmation=1'
+					href='https://github.com/ruslan-moiseyenko'
 					target='_blank'
 					rel='noreferrer'
 					className='hover:text-primary text-brand-300 transition-colors'
 				>
-					RED Group
+					Me
 				</a>
-				. <br /> All rights reserved.
+				<br /> 😇 ™
 			</footer>
 		</aside>
 	);
