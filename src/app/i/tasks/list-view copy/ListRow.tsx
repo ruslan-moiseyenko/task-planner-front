@@ -1,23 +1,23 @@
-import cn from 'clsx'
-import { GripVertical, Loader, Trash } from 'lucide-react'
-import type { Dispatch, SetStateAction } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import cn from 'clsx';
+import { GripVertical, Loader, Trash } from 'lucide-react';
+import type { Dispatch, SetStateAction } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 
-import Checkbox from '@/components/ui/checkbox'
-import { TransparentField } from '@/components/ui/fields/TransparentField'
-import { SingleSelect } from '@/components/ui/task-edit/SingleSelect'
-import { DatePicker } from '@/components/ui/task-edit/date-picker/DatePicker'
+import Checkbox from '@/components/ui/checkbox/Checkbox';
+import { TransparentField } from '@/components/ui/fields/TransparentField';
+import { SingleSelect } from '@/components/ui/task-edit/SingleSelect';
+import { DatePicker } from '@/components/ui/task-edit/date-picker/DatePicker';
 
-import type { ITaskResponse, TypeTaskFormState } from '@/types/task.types'
+import type { ITaskResponse, TypeTaskFormState } from '@/types/task.types';
 
-import { useDeleteTask } from '../hooks/useDeleteTask'
-import { useTaskDebounce } from '../hooks/useTaskDebounce'
+import { useDeleteTask } from '../hooks/useDeleteTask';
+import { useTaskDebounce } from '../hooks/useTaskDebounce';
 
-import styles from './ListView.module.scss'
+import styles from './ListView.module.scss';
 
 interface IListRow {
-	item: ITaskResponse
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
+	item: ITaskResponse;
+	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
 }
 
 export function ListRow({ item, setItems }: IListRow) {
@@ -26,20 +26,20 @@ export function ListRow({ item, setItems }: IListRow) {
 			name: item.name,
 			isCompleted: item.isCompleted,
 			createdAt: item.createdAt,
-			priority: item.priority
-		}
-	})
+			priority: item.priority,
+		},
+	});
 
-	useTaskDebounce({ watch, itemId: item.id })
+	useTaskDebounce({ watch, itemId: item.id });
 
-	const { deleteTask, isDeletePending } = useDeleteTask()
+	const { deleteTask, isDeletePending } = useDeleteTask();
 
 	return (
 		<div
 			className={cn(
 				styles.row,
 				watch('isCompleted') ? styles.completed : '',
-				'animation-opacity'
+				'animation-opacity',
 			)}
 		>
 			<div>
@@ -82,7 +82,7 @@ export function ListRow({ item, setItems }: IListRow) {
 						<SingleSelect
 							data={['high', 'medium', 'low'].map(item => ({
 								value: item,
-								label: item
+								label: item,
 							}))}
 							onChange={onChange}
 							value={value || ''}
@@ -101,5 +101,5 @@ export function ListRow({ item, setItems }: IListRow) {
 				</button>
 			</div>
 		</div>
-	)
+	);
 }

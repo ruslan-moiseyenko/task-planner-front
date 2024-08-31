@@ -4,9 +4,9 @@ import Loader from '@/components/ui/Loader';
 
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
-import { SwitcherView } from '@/app/tasks/SwitcherView';
-import { KanbanView } from '@/app/tasks/kanban-view/KanbanView';
-import { ListView } from '@/app/tasks/list-view copy/ListView';
+import { SwitcherView } from '@/app/i/tasks/SwitcherView';
+import { KanbanView } from '@/app/i/tasks/kanban-view/KanbanView';
+import { ListView } from '@/app/i/tasks/list-view copy/ListView';
 
 export type TypeView = 'list' | 'kanban';
 
