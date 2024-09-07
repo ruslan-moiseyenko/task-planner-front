@@ -31,7 +31,7 @@ export function KanbanColumn({ value, items, label, setItems }: IKanbanColumn) {
 						{filterTasks(items, value)?.map((item, index) => (
 							<Draggable
 								key={item.id}
-								draggableId={`item.id-${item.id}${index}`}
+								draggableId={`${item.id}`}
 								index={index}
 							>
 								{provided => (

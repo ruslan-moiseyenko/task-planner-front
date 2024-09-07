@@ -16,23 +16,19 @@ export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
 	const { updateTask } = useUpdateTask();
 	const { createTask } = useCreateTask();
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const debouncedCreateTask = useCallback(
-		(formData: TypeTaskFormState) => {
-			const debounced = debounce(() => {
-				createTask(formData);
-			}, 500);
-			return debounced;
-		},
-		[createTask],
+		debounce((formData: TypeTaskFormState) => {
+			createTask(formData);
+		}, 1000),
+		[],
 	);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const debouncedUpdateTask = useCallback(
-		(formData: TypeTaskFormState) => {
-			const debounced = debounce(() => {
-				updateTask({ id: itemId, data: formData });
-			}, 500);
-			return debounced;
-		},
+		debounce((formData: TypeTaskFormState) => {
+			updateTask({ id: itemId, data: formData });
+		}, 500),
 		[updateTask, itemId],
 	);
 
@@ -44,6 +40,7 @@ export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
 					priority: formData.priority || undefined,
 				});
 			} else {
+				console.log('🚀 ~ Should work Create Task:');
 				debouncedCreateTask(formData);
 			}
 		});
